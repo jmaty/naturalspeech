@@ -4,8 +4,10 @@
 Defines the set of symbols used in text input to the model.
 """
 _pad = "_"
-_punctuation = ';:,.!?¡¿—…"«»“” '
-_letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+# _punctuation = ';:,.!?¡¿—…"«»“” '
+# _letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+_punctuation = '!,-.:;–/()?ˈ„“”\"‚‘’ˌː… '
+_letters = "\\ACDEFGHIJLMNOPQRSTUWYZabcdefghijklmnopqrstuvwxyz@#$*%Ç"
 _letters_ipa = "ɑɐɒæɓʙβɔɕçɗɖðʤəɘɚɛɜɝɞɟʄɡɠɢʛɦɧħɥʜɨɪʝɭɬɫɮʟɱɯɰŋɳɲɴøɵɸθœɶʘɹɺɾɻʀʁɽʂʃʈʧʉʊʋⱱʌɣɤʍχʎʏʑʐʒʔʡʕʢǀǁǂǃˈˌːˑʼʴʰʱʲʷˠˤ˞↓↑→↗↘'̩'ᵻ"
 
 

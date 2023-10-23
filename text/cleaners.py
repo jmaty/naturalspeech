@@ -108,3 +108,9 @@ def english_cleaners2(text):
     )
     phonemes = collapse_whitespace(phonemes)
     return phonemes
+
+
+def no_cleaners(text):
+    """Basic pipeline that only collapses whitespace without lowercasing and transliteration."""
+    text = collapse_whitespace(text)
+    return text

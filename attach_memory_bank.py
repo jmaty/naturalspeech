@@ -1,4 +1,6 @@
 import os
+# JMa
+import os.path as osp
 import argparse
 from pathlib import Path
 
@@ -129,7 +131,9 @@ def get_zs(net_g, dataloader, num_samples=0):
 def k_means(zs):
     X = torch.cat(zs, dim=1).transpose(0, 1).numpy()
     print(X.shape)
-    kmeans = KMeans(n_clusters=1000, random_state=0, n_init="auto").fit(X)
+    # JMa
+    # kmeans = KMeans(n_clusters=1000, random_state=0, n_init="auto").fit(X)
+    kmeans = KMeans(n_clusters=1000, random_state=0, n_init=1).fit(X)
     print(kmeans.cluster_centers_.shape)
 
     return kmeans.cluster_centers_
@@ -187,8 +191,12 @@ if __name__ == "__main__":
         }
     )
 
-    p = Path(args.weights_path)
-    save_path = p.with_stem(p.stem + "_with_memory").__str__()
+    # JMa
+    # p = Path(args.weights_path)
+    # save_path = p.with_stem(p.stem + "_with_memory").__str__()
+    dname, name = osp.split(args.weights_path)
+    bname, ext = os.path.splitext(name)
+    save_path = osp.join(dname, f"{bname}_with_memory{ext}")
     save_checkpoint(net_g, optimizer, lr, iterations, save_path)
 
     # test

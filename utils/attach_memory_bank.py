@@ -129,7 +129,9 @@ def get_zs(net_g, dataloader, num_samples=0):
 def k_means(zs):
     X = torch.cat(zs, dim=1).transpose(0, 1).numpy()
     print(X.shape)
-    kmeans = KMeans(n_clusters=1000, random_state=0, n_init="auto").fit(X)
+    # JMa
+    kmeans = KMeans(n_clusters=1000, random_state=0, n_init=1).fit(X)
+    # kmeans = KMeans(n_clusters=1000, random_state=0, n_init="auto").fit(X)
     print(kmeans.cluster_centers_.shape)
 
     return kmeans.cluster_centers_

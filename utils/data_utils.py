@@ -379,6 +379,8 @@ class TextAudioLoaderWithDuration(torch.utils.data.Dataset):
         self.hop_length = hparams.hop_length
         self.win_length = hparams.win_length
         self.sampling_rate = hparams.sampling_rate
+        # JMa
+        self.duration_path = hparams.durations
 
         self.cleaned_text = getattr(hparams, "cleaned_text", False)
 
@@ -436,6 +438,8 @@ class TextAudioLoaderWithDuration(torch.utils.data.Dataset):
                 self.hop_length,
                 self.win_length,
                 center=False,
+                # JMa
+                return_complex=False
             )
             spec = torch.squeeze(spec, 0)
             torch.save(spec, spec_filename)
@@ -452,7 +456,9 @@ class TextAudioLoaderWithDuration(torch.utils.data.Dataset):
         return text_norm
 
     def get_duration(self, audio_path_basename):
-        duration_path = os.path.join("durations", audio_path_basename + ".npy")
+        # JMa
+        duration_path = os.path.join(self.duration_path, audio_path_basename + ".npy")
+        # duration_path = os.path.join("durations", audio_path_basename + ".npy")
         duration = torch.from_numpy(np.load(duration_path))
         return duration
 
